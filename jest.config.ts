@@ -9,6 +9,12 @@ const config: Config.InitialOptions = {
     collectCoverage: true,
     collectCoverageFrom: ['src/**/*.ts'],
     coverageDirectory: 'coverage',
+    coverageThreshold: {
+        global: {
+            functions: 85,
+            statements: 75,
+        }
+    }
 }
 
 export default config;

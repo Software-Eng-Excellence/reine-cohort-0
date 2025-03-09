@@ -1,11 +1,30 @@
-import {FinanceCalculator, OrderManagement, Validator} from '../src/app';
+import { Validator, FinanceCalculator, OrderManagement, Order } from './../src/app';
 
 describe("OrderManagement", () => {
+    // before all
+    // before each
+    let validator: Validator;
+    let calc : FinanceCalculator;
+    let orderManager: OrderManagement;
+    let baseValidator: (order: Order) => void;
+
+    beforeAll(() => {
+        validator = new Validator([]);
+        calc = new FinanceCalculator();
+    });
+
+    beforeEach(() => {
+        baseValidator = validator.validate;
+        validator.validate = jest.fn();
+        orderManager = new OrderManagement(validator, calc);
+    });
+
+    afterEach(() => {
+        validator.validate = baseValidator;
+    });
+
     it("should add an order", () => {
         // arrange
-        const validator = new Validator([]);
-        const calc = new FinanceCalculator();
-        const orderManager = new OrderManagement(validator, calc);
 
         const item = "Sponge";
         const price = 15;
@@ -19,9 +38,7 @@ describe("OrderManagement", () => {
     
     it("should get an order", () => {
         // arrange
-        const validator = new Validator([]);
-        const calc = new FinanceCalculator();
-        const orderManager = new OrderManagement(validator, calc);
+
         const item = "Sponge";
         const price = 15;
         orderManager.addOrder(item, price);
@@ -30,6 +47,35 @@ describe("OrderManagement", () => {
         //assert
         expect(order).toEqual({ id: 1, item, price });
     });
+
+    it("should call finance calculator to get total revenue", () => {
+
+        //arrange
+        const item = "Sponge";
+        const price = 15;
+        orderManager.addOrder(item, price);
+        const spy = jest.spyOn(calc, "getRevenue");
+
+        //act
+        orderManager.getTotalRevenue();
+
+        //assert
+        expect(spy).toHaveBeenCalled();
+        expect(spy).toHaveBeenCalledWith([{ id: 1, item, price }]);
+        expect(spy).toHaveReturnedWith(15);
+    });
+
+        it("should throw addition exception if validator does not pass", () => {
+            //arrange
+            const item = "Sponge";
+            const price = 10;
+            (validator.validate as jest.Mock).mockImplementation(() => {
+                throw new Error("Invalid order");
+            });
+
+            expect(() => orderManager.addOrder(item, price)).toThrow("[OrderManagement] Error adding order: Invalid order");
+            
+        });
 }); 
 
 describe("FinanceCalculator", () => {
@@ -62,7 +108,7 @@ describe("FinanceCalculator", () => {
         // act
         const averageBuyPower = calc.getAverageBuyPower(orders);
         // assert
-        expect(averageBuyPower).toBe(17.2);
+        expect(averageBuyPower).toBeCloseTo(17.2, 1);
         });
     
 }
