@@ -19,6 +19,8 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/csv-parse": "^1.2.5",
+    "@types/csv-stringify": "^3.1.3",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.9",
     "eslint": "^9.21.0",
@@ -31,6 +33,8 @@
     "typescript-eslint": "^8.26.0"
   },
   "dependencies": {
+    "csv-parse": "^5.6.0",
+    "csv-stringify": "^6.5.2",
     "dotenv": "^16.4.7",
     "winston": "^3.17.0"
   }
