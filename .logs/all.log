@@ -1,19 +1,56 @@
-{"level":"info","message":"Orders after adding a new order: %o","timestamp":"2025-03-09T23:57:19.211Z"}
-{"level":"info","message":"Total Revenue:108","timestamp":"2025-03-09T23:57:19.220Z"}
-{"level":"info","message":"Average Buy Power:18","timestamp":"2025-03-09T23:57:19.221Z"}
-{"level":"info","message":"Order with ID 2: %o","timestamp":"2025-03-09T23:57:19.222Z"}
-{"level":"warn","message":"Order with ID 10 not found","timestamp":"2025-03-09T23:57:19.222Z"}
-{"level":"info","message":"Order with ID 10 (non-existent):undefined","timestamp":"2025-03-09T23:57:19.223Z"}
-{"level":"info","message":"Orders after adding a new order: %o","timestamp":"2025-03-09T23:57:51.368Z"}
-{"level":"info","message":"Total Revenue:108","timestamp":"2025-03-09T23:57:51.378Z"}
-{"level":"info","message":"Average Buy Power:18","timestamp":"2025-03-09T23:57:51.379Z"}
-{"level":"info","message":"Order with ID 2: %o","timestamp":"2025-03-09T23:57:51.380Z"}
-{"level":"warn","message":"Order with ID 10 not found","timestamp":"2025-03-09T23:57:51.381Z"}
-{"level":"info","message":"Order with ID 10 (non-existent):undefined","timestamp":"2025-03-09T23:57:51.382Z"}
-{"level":"debug","message":"order management instance created","timestamp":"2025-03-10T00:01:49.968Z"}
-{"level":"info","message":"Orders after adding a new order: %o","timestamp":"2025-03-10T00:01:49.972Z"}
-{"level":"info","message":"Total Revenue:108","timestamp":"2025-03-10T00:01:49.977Z"}
-{"level":"info","message":"Average Buy Power:18","timestamp":"2025-03-10T00:01:49.978Z"}
-{"level":"info","message":"Order with ID 2: %o","timestamp":"2025-03-10T00:01:49.979Z"}
-{"level":"warn","message":"Order with ID 10 not found","timestamp":"2025-03-10T00:01:49.980Z"}
-{"level":"info","message":"Order with ID 10 (non-existent):undefined","timestamp":"2025-03-10T00:01:49.981Z"}
+[2025-03-10 02:27:34] debug: order management instance created 
+[2025-03-10 02:27:34] info: New order added 
+[2025-03-10 02:27:34] info: New order added 
+[2025-03-10 02:27:34] info: New order added 
+[2025-03-10 02:27:34] info: New order added 
+[2025-03-10 02:27:34] info: New order added 
+[2025-03-10 02:27:34] info: New order added 
+[2025-03-10 02:27:34] info: Order added in 0ms 
+[2025-03-10 02:27:34] info: Orders after adding a new order: %o 
+[2025-03-10 02:27:34] info: Total Revenue:108 
+[2025-03-10 02:27:34] info: Average Buy Power:18 
+[2025-03-10 02:27:34] info: Order with ID 2: %o 
+[2025-03-10 02:27:34] warn: Order with ID 10 not found 
+[2025-03-10 02:27:34] info: Order with ID 10 (non-existent):undefined 
+{"level":"debug","message":"order management instance created","timestamp":"2025-03-10T00:27:49.547Z"}
+{"item":"Sponge","level":"info","message":"New order added","price":15,"timestamp":"2025-03-10T00:27:49.552Z"}
+{"item":"Chocolate","level":"info","message":"New order added","price":20,"timestamp":"2025-03-10T00:27:49.553Z"}
+{"item":"Fruit","level":"info","message":"New order added","price":18,"timestamp":"2025-03-10T00:27:49.554Z"}
+{"item":"Red Velvet","level":"info","message":"New order added","price":25,"timestamp":"2025-03-10T00:27:49.554Z"}
+{"item":"Coffee","level":"info","message":"New order added","price":8,"timestamp":"2025-03-10T00:27:49.555Z"}
+{"item":"Marble","level":"info","message":"New order added","price":22,"timestamp":"2025-03-10T00:27:49.556Z"}
+{"item":"Marble","level":"info","message":"Order added in 0ms","price":22,"timestamp":"2025-03-10T00:27:49.556Z"}
+{"level":"info","message":"Orders after adding a new order: %o","timestamp":"2025-03-10T00:27:49.557Z"}
+{"level":"info","message":"Total Revenue:108","timestamp":"2025-03-10T00:27:49.563Z"}
+{"level":"info","message":"Average Buy Power:18","timestamp":"2025-03-10T00:27:49.564Z"}
+{"level":"info","message":"Order with ID 2: %o","timestamp":"2025-03-10T00:27:49.564Z"}
+{"level":"warn","message":"Order with ID 10 not found","timestamp":"2025-03-10T00:27:49.565Z"}
+{"level":"info","message":"Order with ID 10 (non-existent):undefined","timestamp":"2025-03-10T00:27:49.566Z"}
+{"level":"debug","message":"order management instance created","timestamp":"2025-03-10T00:33:00.334Z"}
+{"item":"Sponge","level":"info","message":"New order added","price":15,"timestamp":"2025-03-10T00:33:00.339Z"}
+{"item":"Chocolate","level":"info","message":"New order added","price":20,"timestamp":"2025-03-10T00:33:00.340Z"}
+{"item":"Fruit","level":"info","message":"New order added","price":18,"timestamp":"2025-03-10T00:33:00.341Z"}
+{"item":"Red Velvet","level":"info","message":"New order added","price":25,"timestamp":"2025-03-10T00:33:00.341Z"}
+{"item":"Coffee","level":"info","message":"New order added","price":8,"timestamp":"2025-03-10T00:33:00.342Z"}
+{"item":"Marble","level":"info","message":"New order added","price":22,"timestamp":"2025-03-10T00:33:00.343Z"}
+{"item":"Marble","level":"info","message":"Order added in 0ms","price":22,"timestamp":"2025-03-10T00:33:00.343Z"}
+{"level":"info","message":"Orders after adding a new order: %o","timestamp":"2025-03-10T00:33:00.344Z"}
+{"level":"info","message":"Total Revenue:108","timestamp":"2025-03-10T00:33:00.350Z"}
+{"level":"info","message":"Average Buy Power:18","timestamp":"2025-03-10T00:33:00.351Z"}
+{"level":"info","message":"Order with ID 2: %o","timestamp":"2025-03-10T00:33:00.352Z"}
+{"level":"warn","message":"Order with ID 10 not found","timestamp":"2025-03-10T00:33:00.353Z"}
+{"level":"info","message":"Order with ID 10 (non-existent):undefined","timestamp":"2025-03-10T00:33:00.353Z"}
+{"level":"debug","message":"order management instance created","timestamp":"2025-03-10T00:33:24.877Z"}
+{"item":"Sponge","level":"info","message":"New order added","price":15,"timestamp":"2025-03-10T00:33:24.883Z"}
+{"item":"Chocolate","level":"info","message":"New order added","price":20,"timestamp":"2025-03-10T00:33:24.885Z"}
+{"item":"Fruit","level":"info","message":"New order added","price":18,"timestamp":"2025-03-10T00:33:24.885Z"}
+{"item":"Red Velvet","level":"info","message":"New order added","price":25,"timestamp":"2025-03-10T00:33:24.886Z"}
+{"item":"Coffee","level":"info","message":"New order added","price":8,"timestamp":"2025-03-10T00:33:24.887Z"}
+{"item":"Marble","level":"info","message":"New order added","price":22,"timestamp":"2025-03-10T00:33:24.889Z"}
+{"item":"Marble","level":"info","message":"Order added in 1ms","price":22,"timestamp":"2025-03-10T00:33:24.890Z"}
+{"level":"info","message":"Orders after adding a new order: %o","timestamp":"2025-03-10T00:33:24.891Z"}
+{"level":"info","message":"Total Revenue:108","timestamp":"2025-03-10T00:33:24.896Z"}
+{"level":"info","message":"Average Buy Power:18","timestamp":"2025-03-10T00:33:24.897Z"}
+{"level":"info","message":"Order with ID 2: %o","timestamp":"2025-03-10T00:33:24.898Z"}
+{"level":"warn","message":"Order with ID 10 not found","timestamp":"2025-03-10T00:33:24.898Z"}
+{"level":"info","message":"Order with ID 10 (non-existent):undefined","timestamp":"2025-03-10T00:33:24.899Z"}

@@ -27,6 +27,12 @@ export class OrderManagement {
       const order: Order = { id: this.orders.length + 1, item, price };
       this.validator.validate(order);
       this.orders.push(order);
+
+      logger.info("New order added", { 
+        item, 
+        price, 
+        timestamp: new Date().toISOString() 
+    });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       throw new Error("[OrderManagement] Error adding order: " + error.message);

@@ -24,8 +24,10 @@ import logger from './util/logger';
   const newItem = "Marble";
   const newPrice = 22;
 
+  const start = Date.now();
   OrderManager.addOrder(newItem, newPrice);
-  
+  const end = Date.now();
+  logger.info(`Order added in ${end - start}ms`, { item: newItem, price: newPrice });
   logger.info("Orders after adding a new order: %o" ,OrderManager.getOrders());
   
   // Calculate Total Revenue directly
