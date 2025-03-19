@@ -44,7 +44,7 @@ describe('CSV Parser', () => {
     it('should throw an error if the CSV file cannot be read', async () => {
         (fs.readFile as jest.Mock).mockRejectedValue(new Error('File not found'));
 
-        await expect(readCSVFile(cakeOrders)).rejects.toThrow('error reading csv file: Error: File not found');
+        await expect(readCSVFile(cakeOrders)).rejects.toThrow('Error reading CSV file: Error reading file at path "src/data/cake orders.csv": File not found');
     });
 
     it('should write CSV file correctly', async () => {
@@ -68,6 +68,6 @@ describe('CSV Parser', () => {
             ["4002", "Leash", "Hamster", "PetCare", "Small", "No Flavor", "No", "248", "2"]
         ];
 
-        await expect(writeCSVFile(cakeOrders, data)).rejects.toThrow('error writing csv file: Error: Permission denied');
+        await expect(writeCSVFile(cakeOrders, data)).rejects.toThrow('Error writing CSV file: Permission denied');
     });
 });

@@ -1,8 +1,8 @@
 import config from "./config";
 import logger from "./util/logger";
 import { readCSVFile } from "./util/parsers/csvParser";
-import { JsonParser } from "./util/parsers/jsonParser";
 import { parseXMLFile } from "./util/parsers/xmlParser";
+import { parseJsonFile } from "./util/parsers/jsonParser";
 import { BookOrder, PetOrder } from "./types/orderTypes";
 
 const { cakeOrders, bookOrders, petOrders, furnitureOrders, toyOrders } = config.paths.data;
@@ -18,11 +18,11 @@ async function fetchOrdersFromFile<T>(filePath: string, parser: (filePath: strin
 
 async function fetchAllOrders() {
     await fetchOrdersFromFile(cakeOrders, readCSVFile);
-    await fetchOrdersFromFile(bookOrders, JsonParser.parseJsonFile<BookOrder[]>);
-    await fetchOrdersFromFile(petOrders, JsonParser.parseJsonFile<PetOrder[]>);
+    await fetchOrdersFromFile(bookOrders, parseJsonFile<BookOrder[]>);
+    await fetchOrdersFromFile(petOrders, parseJsonFile<PetOrder[]>);
     await fetchOrdersFromFile(furnitureOrders, parseXMLFile);
     await fetchOrdersFromFile(toyOrders, parseXMLFile);
 }
 
-fetchAllOrders();
+fetchAllOrders().catch(logger.error);;
 
