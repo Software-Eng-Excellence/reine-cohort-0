@@ -1,28 +1,26 @@
-import config from "./config";
-import logger from "./util/logger";
-import { readCSVFile } from "./util/parsers/csvParser";
-import { parseXMLFile } from "./util/parsers/xmlParser";
-import { parseJsonFile } from "./util/parsers/jsonParser";
-import { BookOrder, PetOrder } from "./types/orderTypes";
+import { CakeBuilder } from './model/builders/cake.builder';
 
-const { cakeOrders, bookOrders, petOrders, furnitureOrders, toyOrders } = config.paths.data;
+async function main() {
+    const cakeBuilder = new CakeBuilder();
+    const cake = cakeBuilder
+        .setType("type")
+        .setFlavor("flavor")
+        .setFilling("filling")
+        .setSize(10)
+        .setLayers(2)
+        .setFrostingType("frostingType")
+        .setFrostingFlavor("frostingFlavor")
+        .setDecorationType("decorationType")
+        .setDecorationColor("decorationColor")
+        .setCustomMessage("customMessage")
+        .setShape("shape")
+        .setAllergies("allergies")
+        .setSpecialIngredients("specialIngredients")
+        .setPackagingType("packagingType")
+        .build();
 
-async function fetchOrdersFromFile<T>(filePath: string, parser: (filePath: string) => Promise<T>) {
-    const orders = await parser(filePath);
-    if (Array.isArray(orders)) {
-        orders.forEach((order) => logger.info(JSON.stringify(order, null, 2)));
-    } else {
-        logger.info(JSON.stringify(orders, null, 2));
-    }
+        
+    console.log(cake);
 }
 
-async function fetchAllOrders() {
-    await fetchOrdersFromFile(cakeOrders, readCSVFile);
-    await fetchOrdersFromFile(bookOrders, parseJsonFile<BookOrder[]>);
-    await fetchOrdersFromFile(petOrders, parseJsonFile<PetOrder[]>);
-    await fetchOrdersFromFile(furnitureOrders, parseXMLFile);
-    await fetchOrdersFromFile(toyOrders, parseXMLFile);
-}
-
-fetchAllOrders().catch(logger.error);;
-
+main();
