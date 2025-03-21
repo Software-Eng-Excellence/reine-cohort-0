@@ -3,5 +3,10 @@ export interface Item {
 }
 
 export enum ItemCategory {
-    CAKE
+    CAKE,
+    BOOK,
+    CLOTHING,
+    FURNITURE,
+    PET,
+    TOY
 }
