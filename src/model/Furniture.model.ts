@@ -1,4 +1,4 @@
-import { Item, ItemCategory } from "./item.model";
+import { Item, ItemCategory } from "./Item.model";
 
 export class Furniture implements Item {
     type: string;
