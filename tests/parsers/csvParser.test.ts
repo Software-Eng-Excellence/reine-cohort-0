@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
-import { readCSVFile, writeCSVFile } from '../src/util/parsers/csvParser';
-import config from '../src/config';
+import { readCSVFile, writeCSVFile } from '../../src/util/parsers/csvParser';
+import config from '../../src/config';
 
 jest.mock('fs', () => ({
     promises: {

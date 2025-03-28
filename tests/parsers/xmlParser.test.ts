@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
-import { parseXMLFile } from '../src/util/parsers/xmlParser';
-import config from '../src/config';
-import { mockFurnitureOrdersData, mockToyOrdersData } from './mocks/mockData';
+import { parseXMLFile } from '../../src/util/parsers/xmlParser';
+import config from '../../src/config';
+import { mockFurnitureOrdersData, mockToyOrdersData } from '../mocks/mockData';
 
 jest.mock('fs', () => ({
     promises: {
