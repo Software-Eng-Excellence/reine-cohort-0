@@ -50,8 +50,8 @@ export class ToyBuilder {
             this.educational
         ];
 
-        for (const property of requiredProperties) {
-            if (property === undefined || property === null) {
+        for (const property in requiredProperties) {
+            if (!property) {
                 logger.error("Missing required property, could not build Toy");
                 throw new Error("Missing required property");
             }

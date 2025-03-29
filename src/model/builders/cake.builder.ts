@@ -17,6 +17,9 @@ export class CakeBuilder {
     private specialIngredients!: string;
     private packagingType!: string;
 
+    public static newBuilder(): CakeBuilder {
+        return new CakeBuilder();
+    }
     
     setType(type: string): CakeBuilder {
         this.type = type;
@@ -106,7 +109,7 @@ export class CakeBuilder {
             this.packagingType
         ];
 
-        for (const property of requiredProperties) {
+        for (const property in requiredProperties) {
             if (!property) {
                 logger.error("Missing required property, could not build Cake");
                 throw new Error("Missing required property");
