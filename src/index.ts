@@ -1,76 +1,84 @@
-// import { ClothingBuilder } from './model/builders/clothing.builder';
-// import { BookBuilder } from './model/builders/book.builder';
-// import { CakeBuilder } from './model/builders/cake.builder';
-// import { FurnitureBuilder } from './model/builders/furniture.builder';
-// import { PetBuilder } from './model/builders/pet.builder';
-// import { ToyBuilder } from './model/builders/toy.builder';
 import { readCSVFile } from './util/parsers/csvParser';
+import { parseJsonFile } from './util/parsers/jsonParser';
+import { parseXMLFile } from './util/parsers/xmlParser';
 import { CSVCakeMapper } from './mappers/Cake.mapper';
 import logger from './util/logger';
-import { CSVOrderMapper } from './mappers/Order.mapper';
+import { CSVOrderMapper, JSONOrderMapper, XMLOrderMapper } from './mappers/Order.mapper';
+import { CSVClothingMapper } from './mappers/Clothing.mapper';
+import config from './config';
+import { JSONBookMapper } from './mappers/Book.mapper';
+import { JSONPetMapper } from './mappers/Pet.mapper';
+import { XMLToyMapper } from './mappers/Toy.mapper';
+import { XMLFurnitureMapper } from './mappers/Furniture.mapper';
+
 
 async function main() {
-    const data = await readCSVFile("src/data/cake orders.csv");
-    const cakeMapper = new CSVCakeMapper();
-    const orderMapper = new CSVOrderMapper(cakeMapper);
-    const orders = data.map(orderMapper.map.bind(orderMapper));
+    //cake orders
+    
+    try {
+        const cakeData = await readCSVFile(config.paths.data.cakeOrders);
+        const cakeMapper = new CSVCakeMapper();
+        const cakeOrderMapper = new CSVOrderMapper(cakeMapper);
+        const cakeOrders = cakeData.map(cakeOrderMapper.map.bind(cakeOrderMapper));
+        logger.info("List of cake orders: \n %o", cakeOrders);
+    } catch (error) {
+        logger.error("Error processing cake orders: %o", error);
+    }
+    // clothing orders
+    try {
+        const clothingData = await readCSVFile(config.paths.data.clothingOrders);
+        const clothingMapper = new CSVClothingMapper();
+        const clothingOrderMapper = new CSVOrderMapper(clothingMapper);
+        const clothingOrders = clothingData.map(clothingOrderMapper.map.bind(clothingOrderMapper));
+        logger.info("List of clothing orders: \n %o", clothingOrders);
+    } catch (error) {
+        logger.error("Error processing clothing orders: %o", error);
+    }
+    // books orders
+    try {
+        const clothingData = await parseJsonFile<{ [key: string]: string }[]>(config.paths.data.bookOrders);
+        const bookMapper = new JSONBookMapper();
+        const bookOrderMapper = new JSONOrderMapper(bookMapper);
+        const bookOrders = clothingData.map(bookOrderMapper.map.bind(bookOrderMapper));
+        logger.info("List of book orders: \n %o", bookOrders);
+    } catch (error) {
+        logger.error("Error processing book orders: %o", error);
+    }
+    // pet orders
+    try {
+        const petData = await parseJsonFile<{ [key: string]: string }[]>(config.paths.data.petOrders);
+        const petMapper = new JSONPetMapper();
+        const petOrderMapper = new JSONOrderMapper(petMapper);
+        const petOrders = petData.map(petOrderMapper.map.bind(petOrderMapper));
+        logger.info("List of pets: \n %o", petOrders);
+    } catch (error) {
+        logger.error("Error processing pet orders: %o", error);
+    }
+    // toy orders
+    try {
+        const toyData = await parseXMLFile<{ data: { row: { [key: string]: string }[] } }>(config.paths.data.toyOrders);
+        const rows = toyData.data.row;
+        const toyMapper = new XMLToyMapper();
+        const toyOrderMapper = new XMLOrderMapper(toyMapper);
+    
+        const toyOrders = rows.map((row) => toyOrderMapper.map(row));
+        logger.info("List of toy orders: \n %o", toyOrders);
+    } catch (error) {
+        logger.error("Error processing toy orders: %o", error);
+    }
 
-    logger.info("List of orders: \n %o", orders);
+    // furniture orders
+    try {
+        const furnitureData = await parseXMLFile<{ data: { row: { [key: string]: string }[] } }>(config.paths.data.furnitureOrders);
+        const rows = furnitureData.data.row;
+        const furnitureMapper = new XMLFurnitureMapper();
+        const furnitureOrderMapper = new XMLOrderMapper(furnitureMapper);
 
-    // const book = bookBuilder
-    //     .setTitle("title")
-    //     .setAuthor("author")
-    //     .setGenre("genre")
-    //     .setFormat("format")
-    //     .setLanguage("language")
-    //     .setPublisher("publisher")
-    //     .setSpecialEdition("specialEdition")
-    //     .setPackaging("packaging")
-    //     .build();
-    // console.log(book);
-
-    // const clothing = clothingBuilder
-    //     .setClothingType("type")
-    //     .setSize("size")
-    //     .setColor("color")
-    //     .setMaterial("material")
-    //     .setPattern("pattern")
-    //     .setBrand("brand")
-    //     .setGender("gender")
-    //     .setPackaging("packaging")
-    //     .setSpecialRequest("specialRequest")
-    //     .build();
-    // console.log(clothing);
-
-    // const furniture = furnitureBuilder
-    //     .setType("type")
-    //     .setMaterial("material")
-    //     .setColor("color")
-    //     .setSize("size")
-    //     .setStyle("style")
-    //     .setAssemblyRequired(true)
-    //     .setWarranty("warranty")
-    //     .build();
-    // console.log(furniture);
-
-    // const pet = petBuilder
-    //     .setProductType("type")
-    //     .setPetType("pettype")
-    //     .setBrand("brand")
-    //     .setSize("size")
-    //     .setFlavor("flavor")
-    //     .setEcoFriendly("ecoFriendly")
-    //     .build();
-    // console.log(pet);
-
-    // const toy = toyBuilder
-    //     .setType("type")
-    //     .setAgeGroup("ageGroup")
-    //     .setBrand("brand")
-    //     .setMaterial("material")
-    //     .setBatteryRequired(false)
-    //     .setEducational(false)
-    //     .build();
-    // console.log(toy);
+        const furnitureOrders = rows.map((row) => furnitureOrderMapper.map(row));
+        logger.info("List of furniture orders: \n %o", furnitureOrders);
+    } catch (error) {
+        logger.error("Error processing furniture orders: %o", error);
+    }
 }
+
 main();

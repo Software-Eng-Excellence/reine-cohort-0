@@ -39,7 +39,7 @@ export class OrderBuilder {
             this.quantity,
             this.id
         ];
-
+        
         for (const property of requiredProperties) {
             if (!property) {
                 logger.error("Missing required property, could not build Order");
