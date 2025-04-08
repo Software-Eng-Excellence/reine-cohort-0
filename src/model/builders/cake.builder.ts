@@ -110,7 +110,7 @@ export class CakeBuilder {
         ];
 
         for (const property of requiredProperties) {
-            if (!property) {
+            if (property === undefined || property === null) {
                 logger.error("Missing required property, could not build Cake");
                 throw new Error("Missing required property");
             }
