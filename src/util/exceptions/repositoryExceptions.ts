@@ -11,3 +11,10 @@ export class InvalidItemException extends Error {
         this.name = "InvalidItemException";
     }
 }   
+
+export class InitializationException extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = "InitializationException";
+    }
+}

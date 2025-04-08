@@ -1,7 +1,19 @@
 export type id = string;
-
 export interface ID {
     getId(): id;
+}
+
+export interface Initializable {
+    /**
+    * init - initializes the creation of required tables and establishes a connection.
+    * 
+    * @throws InitializationException - if the initialization process fails.
+    * Thrown if the initialization process fails.
+    * 
+    * @returns A promise that resolves when the initialization is complete.
+    */
+
+    init(): Promise<void>;
 }
 
 /**

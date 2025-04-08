@@ -2,9 +2,9 @@
 import dotenv from "dotenv"
 import path from "path"
 
-dotenv.config({path: path.join(__dirname, '../../.env')})
+dotenv.config({ path: path.join(__dirname, '../../.env') })
 export default {
-    logDir : process.env.LOG_DIR || "logs", 
+    logDir: process.env.LOG_DIR || "logs",
     isDev: process.env.NODE_ENV === "development",
     paths: {
         data: {
@@ -14,6 +14,7 @@ export default {
             clothingOrders: "src/data/clothing orders.csv",
             furnitureOrders: "src/data/furniture orders.xml",
             toyOrders: "src/data/toy orders.xml"
-        }
+        },
+        sqlite: "src/data/orders.db"
     }
 }
