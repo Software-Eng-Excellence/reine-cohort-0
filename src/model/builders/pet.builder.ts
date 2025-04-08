@@ -9,6 +9,10 @@ export class PetBuilder {
     private flavor!: string;
     private ecoFriendly!: string;
 
+    public static newBuilder(): PetBuilder {
+        return new PetBuilder();
+    }
+
     setProductType(productType: string): PetBuilder {
         this.productType = productType;
         return this;

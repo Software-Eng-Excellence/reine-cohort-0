@@ -109,7 +109,7 @@ export class CakeBuilder {
             this.packagingType
         ];
 
-        for (const property in requiredProperties) {
+        for (const property of requiredProperties) {
             if (!property) {
                 logger.error("Missing required property, could not build Cake");
                 throw new Error("Missing required property");

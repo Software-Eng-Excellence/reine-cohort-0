@@ -91,3 +91,67 @@ export const mockToyOrdersData = `
         <Quantity>5</Quantity>
     </order>
 </orders>`;
+
+export const mockCakeOrdersData = JSON.stringify([
+    {
+        "Order ID": "1",
+        "Type": "Sponge",
+        "Flavor": "Vanilla",
+        "Filling": "Cream",
+        "Size": "20",
+        "Layers": "2",
+        "Frosting Type": "Buttercream",
+        "Frosting Flavor": "Vanilla",
+        "Decoration Type": "Sprinkles",
+        "Decoration Color": "Multi-color",
+        "Custom Message": "Happy Birthday",
+        "Shape": "Round",
+        "Allergies": "Nut-Free",
+        "Special Ingredients": "Organic Ingredients",
+        "Packaging Type": "Standard Box"
+    },
+    {
+        "Order ID": "2",
+        "Type": "Chocolate",
+        "Flavor": "Strawberry",
+        "Filling": "Buttercream",
+        "Size": "25",
+        "Layers": "3",
+        "Frosting Type": "Whipped Cream",
+        "Frosting Flavor": "Chocolate",
+        "Decoration Type": "Edible Flowers",
+        "Decoration Color": "Pink",
+        "Custom Message": "Congratulations",
+        "Shape": "Heart-Shaped",
+        "Allergies": "Gluten-Free",
+        "Special Ingredients": "Fresh Berries",
+        "Packaging Type": "Luxury Box"
+    }
+]);
+
+export const mockClothingOrdersData = JSON.stringify([
+    {
+        "Order ID": "1",
+        "Clothing Type": "Shirt",
+        "Size": "M",
+        "Color": "Blue",
+        "Material": "Cotton",
+        "Pattern": "Striped",
+        "Brand": "Nike",
+        "Gender": "Male",
+        "Packaging": "Plastic Wrap",
+        "Special Request": "No special request"
+    },
+    {
+        "Order ID": "2",
+        "Clothing Type": "Pants",
+        "Size": "L",
+        "Color": "Black",
+        "Material": "Denim",
+        "Pattern": "Solid",
+        "Brand": "Levi's",
+        "Gender": "Female",
+        "Packaging": "Eco-Friendly Bag",
+        "Special Request": "Custom Length"
+    }
+]);

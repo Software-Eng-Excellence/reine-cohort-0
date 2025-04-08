@@ -10,56 +10,60 @@ export class FurnitureBuilder {
     private assemblyRequired!: boolean;
     private warranty!: string;
 
-    setType(type: string): FurnitureBuilder {
+    public static newBuilder(): FurnitureBuilder {
+        return new FurnitureBuilder();
+    }
+
+    public setType(type: string): FurnitureBuilder {
         this.type = type;
         return this;
     }
 
-    setMaterial(material: string): FurnitureBuilder {
+    public setMaterial(material: string): FurnitureBuilder {
         this.material = material;
         return this;
     }
 
-    setColor(color: string): FurnitureBuilder {
+    public setColor(color: string): FurnitureBuilder {
         this.color = color;
         return this;
     }
 
-    setSize(size: string): FurnitureBuilder {
+    public setSize(size: string): FurnitureBuilder {
         this.size = size;
         return this;
     }
 
-    setStyle(style: string): FurnitureBuilder {
+    public setStyle(style: string): FurnitureBuilder {
         this.style = style;
         return this;
     }
 
-    setAssemblyRequired(assemblyRequired: boolean): FurnitureBuilder {
+    public setAssemblyRequired(assemblyRequired: boolean): FurnitureBuilder {
         this.assemblyRequired = assemblyRequired;
         return this;
     }
 
-    setWarranty(warranty: string): FurnitureBuilder {
+    public setWarranty(warranty: string): FurnitureBuilder {
         this.warranty = warranty;
         return this;
     }
 
-    build(): Furniture {
-        const requiredProperties = [
-            this.type,
-            this.material,
-            this.color,
-            this.size,
-            this.style,
-            this.assemblyRequired,
-            this.warranty
-        ];
+    public build(): Furniture {
+        const requiredProperties = {
+            type: this.type,
+            material: this.material,
+            color: this.color,
+            size: this.size,
+            style: this.style,
+            assemblyRequired: this.assemblyRequired,
+            warranty: this.warranty,
+        };
 
-        for (const property of requiredProperties) {
-            if (!property) {
-                logger.error("Missing required property, could not build Furniture");
-                throw new Error("Missing required property");
+        for (const [key, value] of Object.entries(requiredProperties)) {
+            if (value === undefined || value === null) {
+                logger.error(`Missing required property: ${key}`);
+                throw new Error(`Missing required property: ${key}`);
             }
         }
 

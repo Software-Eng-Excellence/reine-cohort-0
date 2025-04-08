@@ -12,6 +12,10 @@ export class ClothingBuilder {
     private packaging!: string;
     private specialRequest!: string;
 
+    public static newBuilder(): ClothingBuilder {
+        return new ClothingBuilder();
+    }
+
     setClothingType(clothingType: string): ClothingBuilder {
         this.clothingType = clothingType;
         return this;
