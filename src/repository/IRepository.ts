@@ -1,3 +1,4 @@
+import { Initializable } from './IRepository';
 export type id = string;
 export interface ID {
     getId(): id;
@@ -29,6 +30,7 @@ export interface IRepository<T extends ID> {
      * @param item - The item to be created in the repository.
      * @returns A promise that resolves to the unique identifier (`ID`) of the created item.
      * @throws {InvalidItemException} - Thrown when the provided item is invalid.
+     * @throws {DbException} - Thrown when an error occurs when interacting with the database.
      */
     create(item: T): Promise<id>;
 
@@ -38,6 +40,7 @@ export interface IRepository<T extends ID> {
      * @param id - The ID of the item to retrieve.
      * @returns A promise that resolves to the item with the specified ID.
      * @throws {ItemNotFoundException} - Thrown when no item with the specified ID is found.
+     * @throws {DbException} - Thrown when an error occurs when interacting with the database.
      */
     get(id: id): Promise<T>;
 
@@ -45,6 +48,7 @@ export interface IRepository<T extends ID> {
      * Retrieves all items from the repository.
      *
      * @returns A promise that resolves to an array of all items of type `T` in the repository.
+     * @throws {DbException} - Thrown when an error occurs when interacting with the database.
      */
     getAll(): Promise<T[]>;
 
@@ -55,6 +59,7 @@ export interface IRepository<T extends ID> {
      * @returns A promise that resolves when the update operation is complete.
      * @throws {ItemNotFoundException} - Thrown when the item to update is not found in the repository.
      * @throws {InvalidItemException} - Thrown when the provided item is invalid.
+     * @throws {DbException} - Thrown when an error occurs when interacting with the database.
      */
     update(item: T): Promise<void>;
 
@@ -64,6 +69,10 @@ export interface IRepository<T extends ID> {
      * @param id - The unique identifier of the item to delete.
      * @returns A promise that resolves when the delete operation is complete.
      * @throws {ItemNotFoundException} - Thrown when no item with the specified ID is found.
+     * @throws {DbException} - Thrown when an error occurs when interacting with the database.
      */
     delete(id: id): Promise<void>;
+}
+
+export interface InitializableRepository<T extends ID> extends IRepository<T>, Initializable {
 }
