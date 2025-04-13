@@ -3,7 +3,7 @@ import { readCSVFile, writeCSVFile } from "../../util/parsers/csvParser";
 import { CSVOrderMapper } from "../../mappers/Order.mapper";
 import { CSVCakeMapper } from "../../mappers/Cake.mapper";
 import { IOrder } from "../../model/IOrder";
-import { DbException } from "util/exceptions/repositoryExceptions";
+import { DbException } from "../../util/exceptions/repositoryExceptions";
 
 
 export class CakeOrderRepository extends OrderRepository {
